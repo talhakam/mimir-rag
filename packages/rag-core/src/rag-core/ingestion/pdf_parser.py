@@ -1,4 +1,5 @@
 # packages/rag-core/src/rag_core/ingestion/pdf_parser.py
+from email.parser import Parser
 from pathlib import Path
 import fitz  # PyMuPDF
 
@@ -7,6 +8,12 @@ from rag_core.models.document import ParsedDocument
 
 
 class PDFParser(BaseParser):
+    """
+       Parser for PDF documents using PyMuPDF. 
+       Extracts text from each page and combines it into a single string, 
+       while also collecting metadata. 
+    """
+    
     def supported_extensions(self) -> list[str]:
         return [".pdf"]
 
