@@ -19,7 +19,7 @@ The core RAG pipeline library for RAG Engine. It can be imported by the API laye
 ```
 packages/rag-core/
 ├── src/
-│   └── rag-core/
+│   └── rag_core/
 │       ├── ingestion/          # Document parsing services
 │       │   ├── base.py         # BaseParser interface
 │       │   ├── pdf_parser.py   # PDFParser (PyMuPDF)
