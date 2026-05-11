@@ -17,7 +17,7 @@ class TextParser(BaseParser):
     def parse(self, file_path: Path, metadata: dict | None = None) -> ParsedDocument:
         content = file_path.read_text(encoding="utf-8")
 
-        doc_metadata = metadata or {}
+        doc_metadata = dict(metadata or {})
         doc_metadata.update({
             "title": file_path.stem,
             "author": "",

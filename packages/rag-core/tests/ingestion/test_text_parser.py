@@ -28,6 +28,18 @@ def test_text_parser_reads_markdown_content(tmp_path: Path) -> None:
     assert parsed.metadata["file_type"] == "md"
 
 
+def test_text_parser_preserves_input_metadata_without_mutating_it(tmp_path: Path) -> None:
+    file_path = tmp_path / "notes.txt"
+    file_path.write_text("Metadata should be copied.", encoding="utf-8")
+    metadata = {"source": "manual-upload"}
+
+    parsed = TextParser().parse(file_path, metadata=metadata)
+
+    assert parsed.metadata["source"] == "manual-upload"
+    assert parsed.metadata["filename"] == "notes.txt"
+    assert metadata == {"source": "manual-upload"}
+
+
 def test_parser_registry_routes_txt_to_text_parser() -> None:
     registry = create_default_registry()
 

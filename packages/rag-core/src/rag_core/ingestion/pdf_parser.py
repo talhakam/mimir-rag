@@ -1,5 +1,4 @@
 # packages/rag-core/src/rag_core/ingestion/pdf_parser.py
-from email.parser import Parser
 from pathlib import Path
 import fitz  # PyMuPDF
 
@@ -28,7 +27,7 @@ class PDFParser(BaseParser):
 
         combined_text = "\n\n".join(pages_text)
 
-        doc_metadata = metadata or {}
+        doc_metadata = dict(metadata or {})
         doc_metadata.update({
             "title": doc.metadata.get("title", file_path.stem),
             "author": doc.metadata.get("author", ""),
